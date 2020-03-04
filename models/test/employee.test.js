@@ -10,18 +10,12 @@ describe('Employees', () => {
     emp.validate(err => {
     expect(err.errors.firstName).to.exist;
     });
-    after(() => {
-      mongoose.models = {};
-    });
   });
 
   it('should throw an error if no "lastName" arg', () => {
     const emp = new Employees ({});
     emp.validate(err => {
     expect(err.errors.lastName).to.exist;
-    });
-    after(() => {
-      mongoose.models = {};
     });
   });
 
@@ -90,8 +84,8 @@ describe('Employees', () => {
     }
   });
 
-
-
-
+  after(() => {
+    mongoose.models = {};
+  });
 
 });
